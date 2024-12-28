@@ -1,0 +1,24 @@
+:root {
+	--swiper-navigation-size: 18px;
+}
+:root {
+	--swiper-theme-color: white;
+}
+.swiper-button-prev,
+.swiper-button-next {
+	position: absolute;
+	top: var(--swiper-navigation-top-offset, 40%);
+	width: calc(var(--swiper-navigation-size) / 44 * 27);
+	height: var(--swiper-navigation-size);
+	margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+	z-index: 10;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--swiper-navigation-color, var(--swiper-theme-color));
+	background-color: black;
+	padding: 25px 15px;
+	border-radius: 50px;
+}
+
