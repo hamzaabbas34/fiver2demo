@@ -22,3 +22,6 @@
 	border-radius: 50px;
 }
 
+.scrollllwid::-webkit-scrollbar{
+	width: 0px;
+}

@@ -1,0 +1,84 @@
+.image-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 90vh; /* Adjust as needed */
+	overflow: hidden;
+	position: relative; /* Ensure the container can be used as a reference for absolute positioning */
+}
+
+.image-set {
+	width: 100%; /* Adjust as needed */
+	height: 100%;
+	position: relative;
+}
+.image-set > video {
+	object-position: top;
+}
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	transition: opacity 0.5s ease-in-out; /* Match this with the timeout in JavaScript */
+}
+
+.fade-in {
+	opacity: 1;
+}
+
+.fade-out {
+	opacity: 0;
+}
+
+.text-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 1px solid ridge;
+	background-color: rgba(0, 0, 0, 0.38);
+	z-index: 10;
+}
+.text-overlay .overlay-inside {
+    max-width: 640px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+    padding: 0px 20px ;
+	color: white;
+	line-height: 55px;
+    margin: auto;
+}
+.endtran {
+	transform: translateX(100px);
+}
+.lasttra {
+	transform: translateX(0px);
+}
+
+
+
+.text-overlay button:hover {
+	background-color: black;
+	border: 1px solid black;
+}
+
+.tron {
+	opacity: 0 !important;
+	transform: translateX(200px);
+	transition: transform 0.7s ease-in-out;
+}
+.troff {
+	opacity: 1 !important;
+	transform: translateX(0px);
+}
+@media screen and (min-width: 786px) and (max-width: 1024px) {
+	.image-set {
+		width: 100%;
+	}
+}
+

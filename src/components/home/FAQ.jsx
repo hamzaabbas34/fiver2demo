@@ -53,7 +53,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="my-12 px-8">
+    <div className="my-12 px-8 ">
       <h2 className="text-2xl font-semibold mb-4 font-montserrat">Frequently Asked Questions</h2>
       {questions.map((item, index) => (
         <div key={index} className="my-2">
