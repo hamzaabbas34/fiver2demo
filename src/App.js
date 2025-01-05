@@ -7,6 +7,10 @@ import SignStep2 from "./components/Sign1/SignStep2";
 import Home2 from "./components/Home2/Home";
 import Video from "./components/video/Video";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import Search from "./components/Home2/search/Search.jsx";
+import Movies from "./components/Home2/moives/Movies.jsx";
+import Tvshow from "./components/Home2/Tv/Tvshow.jsx";
+import Popular from "./components/Home2/popular/Popular.jsx";
 
 export default function App() {
 	return (
@@ -28,6 +32,14 @@ export default function App() {
 						}
 					/>
 					<Route
+						path="/search"
+						element={
+							<ProtectedRoute>
+								<Search />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
 						path="/videos"
 						element={
 							<ProtectedRoute>
@@ -35,6 +47,31 @@ export default function App() {
 							</ProtectedRoute>
 						}
 					/>
+					<Route
+						path="/movies"
+						element={
+							<ProtectedRoute>
+								<Movies />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/shows"
+						element={
+							<ProtectedRoute>
+								<Tvshow />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/popular"
+						element={
+							<ProtectedRoute>
+								<Popular />
+							</ProtectedRoute>
+						}
+					/>
+					
 				</Routes>
 			</BrowserRouter>
 		</div>

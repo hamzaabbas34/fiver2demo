@@ -1,45 +1,46 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import "./home.css";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 
 export default function MovisGrid2({ title }) {
-	const navgate = useNavigate();
+	const navigate = useNavigate();
 	const scrollContainerRef = useRef(null);
 	const [hovered, setHovered] = useState(false);
 	const [showModal, setShowModal] = useState(false); // Modal visibility
 	const [selectedImage, setSelectedImage] = useState(""); // Store the clicked image
 
-	function scrollRight() {
+	//const isLogin = localStorage.getItem("isLogin") === "true";
+
+	const scroll = useCallback((direction) => {
 		if (scrollContainerRef.current) {
 			const containerWidth = scrollContainerRef.current.offsetWidth;
 			scrollContainerRef.current.scrollBy({
-				left: containerWidth * 0.2,
+				left:
+					direction === "left" ? -containerWidth * 0.2 : containerWidth * 0.2,
 				behavior: "smooth",
 			});
 		}
-	}
-	function navgatefun() {
+	}, []); // No dependencies required
+
+	// Navigation function
+	const navgatefun = useCallback(() => {
 		const isLogin = localStorage.getItem("isLogin") === "true";
-		isLogin && navgate("/home");
-		!isLogin && navgate("/signin");
-	}
-
-	function scrollLeft() {
-		if (scrollContainerRef.current) {
-			const containerWidth = scrollContainerRef.current.offsetWidth;
-			scrollContainerRef.current.scrollBy({
-				left: -containerWidth * 0.2,
-				behavior: "smooth",
-			});
+		if (isLogin) {
+			navigate("/home");
+		} else {
+			navigate("/signin");
 		}
-	}
+	}, [navigate]);
 
-	const handleImageClick = (imageSrc) => {
-		setSelectedImage(imageSrc); // Set the clicked image
-		setShowModal(true); // Show the modal
-	};
+	const handleImageClick = useCallback(
+		(imageSrc) => {
+			setSelectedImage(imageSrc); // Set the clicked image
+			setShowModal(true); // Show the modal
+		},
+		[] // Dependencies array (empty if the function does not depend on external values)
+	);
 
 	return (
 		<div
@@ -57,10 +58,14 @@ export default function MovisGrid2({ title }) {
 				className=" gap-3 overflow-x-scroll flex  scrollllwid">
 				{hovered && (
 					<>
-						<div className="absolute top-1/2 left-0" onClick={scrollLeft}>
+						<div
+							className="absolute top-[60%] left-5"
+							onClick={() => scroll("left")}>
 							<div className="swiper-button-prev"></div>
 						</div>
-						<div className="absolute top-1/2 right-5" onClick={scrollRight}>
+						<div
+							className="absolute top-[60%] right-5"
+							onClick={() => scroll("right")}>
 							<div className="swiper-button-next"></div>
 						</div>
 					</>

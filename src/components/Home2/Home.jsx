@@ -7,6 +7,7 @@ import video1 from "../../../src/assert/videos/videoplayback (3).mp4";
 import video2 from "../../../src/assert/videos/videoplayback (2).mp4";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import MovisGrid2 from "../WatchMovies/MovisGrid2.jsx";
+import Navbar from "./Navbar.jsx";
 
 const images3 = [
 	video2, // Replace with your image paths
@@ -50,6 +51,7 @@ export default function Home2() {
 
 	return (
 		<div className="relative overflow-hidden bg-black">
+			<Navbar/>
 			<div className="image-container ">
 				<div className="text-overlay">
 					<div

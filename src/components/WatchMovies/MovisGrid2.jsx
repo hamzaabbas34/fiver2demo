@@ -1,10 +1,8 @@
-
-
 import { useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import videos from "../../../src/assert/videos/videoplayback (1).mp4";
-import './move.css'
+import "./move.css";
 export default function Movies({ title }) {
 	const navigate = useNavigate();
 	const scrollContainerRef = useRef(null);
@@ -42,7 +40,9 @@ export default function Movies({ title }) {
 		}
 	};
 
-	const navigateToVideos = () => {
+	const navigateToVideos = ({ videos }) => {
+		console.log("i am here ");
+
 		setShowModal(false); // Close the modal first
 		setTimeout(() => {
 			navigate("/videos", { state: { videos } }); // Navigate to /videos
@@ -54,8 +54,7 @@ export default function Movies({ title }) {
 			className="px-8 relative bg-black bg-opacity-50 -10"
 			style={{ height: "auto" }}
 			onMouseEnter={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}
-		>
+			onMouseLeave={() => setHovered(false)}>
 			<div className="py-5">
 				<h2 className="text-2xl font-montserrat font-semibold text-white">
 					{title}
@@ -63,8 +62,7 @@ export default function Movies({ title }) {
 			</div>
 			<div
 				ref={scrollContainerRef}
-				className="max-h-96 gap-3 overflow-x-scroll flex h-96 scrollllwid"
-			>
+				className="max-h-96 gap-3 overflow-x-scroll flex h-96 scrollllwid">
 				{hovered && (
 					<>
 						<div className="absolute top-[50%] left-0" onClick={scrollLeft}>
@@ -78,8 +76,7 @@ export default function Movies({ title }) {
 				{Array.from({ length: 7 }).map((_, index) => (
 					<div
 						key={index}
-						className="min-w-[16.6rem] bg-red-200 h-full flex items-center justify-center relative"
-					>
+						className="min-w-[16.6rem] bg-red-200 h-full flex items-center justify-center relative">
 						<video
 							src={videos}
 							className="w-full h-full object-cover object-top cursor-pointer"
@@ -93,9 +90,8 @@ export default function Movies({ title }) {
 			{showModal && (
 				<div className="fixed inset-0 text-white bg-black bg-opacity-50 flex items-center justify-center z-50">
 					<div
-						className="bg-black rounded-md shadow-md w-full max-w-xl relative"
-						style={{ height: "400px" }}
-					>
+						className="bg-black rounded-md shadow-md w-full max-w-xl relative md:p-0 px-4"
+						style={{ height: "400px" }}>
 						<video
 							ref={videoRef}
 							src={videos}
@@ -109,9 +105,12 @@ export default function Movies({ title }) {
 						<div className="flex justify-end absolute right-0 top-1">
 							<button
 								className="bg-inherit py-2 px-4"
-								onClick={() => setShowModal(false)}
-							>
-								<Icon icon="bitcoin-icons:cross-outline" width="40" height="40" />
+								onClick={() => setShowModal(false)}>
+								<Icon
+									icon="bitcoin-icons:cross-outline"
+									width="40"
+									height="40"
+								/>
 							</button>
 						</div>
 						<div className="font-montserrat flex text-[14px] gap-1 px-4 bg-black">
@@ -128,9 +127,8 @@ export default function Movies({ title }) {
 						<div className="bg-black">
 							<button
 								className="rounded-md font-montserrat font-semibold px-6 py-4 m-4 bg-white text-black"
-								onClick={navigateToVideos}
-							>
-								play →
+								onClick={() => navigateToVideos({ videos })}>
+								Play →
 							</button>
 						</div>
 					</div>

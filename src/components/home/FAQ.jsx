@@ -39,8 +39,8 @@
 import React, { useState } from 'react';
 
 const questions = [
-  { question: 'What is Netflix?', answer: 'Netflix is a streaming service...' },
-  { question: 'How much does Netflix cost?', answer: 'Plans start at...' },
+  { question: 'What is MAGHANNMOVIE?', answer: 'MAGHANNMOVIE is a streaming service...' },
+  { question: 'How much does MAGHANNMOVIE cost?', answer: 'Plans start at...' },
   { question: 'Where can I watch?', answer: 'You can watch anywhere...' },
   // Add more questions as needed
 ];

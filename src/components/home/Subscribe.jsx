@@ -25,6 +25,7 @@ export default function Subscribe() {
 	const [email, setEmail] = useState("");
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
+	const isLogin = localStorage.getItem("isLogin") === "true";
 
 	const validateEmail = (email) => {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,6 +33,7 @@ export default function Subscribe() {
 	};
 
 	const handleFormSubmit = (e) => {
+		isLogin && navigate("/home");
 		e.preventDefault();
 
 		if (!validateEmail(email)) {
@@ -64,7 +66,7 @@ export default function Subscribe() {
 						placeholder="Email Address"
 					/>
 				</div>
-       
+
 				<button
 					type="submit"
 					className=" w-[100%]   h-12 font-montserrat  px-0 bg-red-600 rounded-full  text-[14px] ">
